@@ -72,6 +72,8 @@ export const IN_COMPONENT_ELEMENT_TYPES = ['LABEL'];
 // filter scope selector filter fields pane root id
 export const ALL_FILTERS_ROOT = 'ALL_FILTERS_ROOT';
 
+export const NEW_BREADCUMB = 'NEW_BREADCUMB';
+
 export enum DashboardStandaloneMode {
   NONE = 0,
   HIDE_NAV = 1,

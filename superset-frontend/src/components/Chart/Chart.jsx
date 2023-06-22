@@ -309,6 +309,7 @@ class Chart extends React.PureComponent {
           height={height}
           width={width}
         >
+          
           <div className="slice_container" data-test="slice-container">
             {this.props.isInView ||
             !isFeatureEnabled(FeatureFlag.DASHBOARD_VIRTUALIZATION) ||

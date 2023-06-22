@@ -300,6 +300,7 @@ class ChartRenderer extends React.Component {
           title={noResultTitle}
           description={noResultDescription}
           image={noResultImage}
+          
         />
       );
     } else {
