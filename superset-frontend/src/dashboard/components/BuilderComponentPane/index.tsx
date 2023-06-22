@@ -30,6 +30,7 @@ import NewRow from '../gridComponents/new/NewRow';
 import NewTabs from '../gridComponents/new/NewTabs';
 import NewMarkdown from '../gridComponents/new/NewMarkdown';
 import NewDynamicComponent from '../gridComponents/new/NewDynamicComponent';
+import DraggableBreadCumb from '../gridComponents/new/NewBreadcumb';
 
 const BUILDER_PANE_WIDTH = 374;
 
@@ -80,11 +81,13 @@ const BuilderComponentPane = ({ topOffset = 0 }) => (
         </Tabs.TabPane>
         <Tabs.TabPane key={2} tab={t('Layout elements')}>
           <NewTabs />
+          
           <NewRow />
           <NewColumn />
           <NewHeader />
           <NewMarkdown />
           <NewDivider />
+          {/* <DraggableBreadCumb /> */}
           {dashboardComponents
             .getAll()
             .map(({ key: componentKey, metadata }) => (

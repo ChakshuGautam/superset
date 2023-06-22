@@ -151,6 +151,7 @@ class DashboardGrid extends React.PureComponent {
   }
 
   handleTopDropTargetDrop(dropResult) {
+    console.log(dropResult)
     if (dropResult) {
       this.props.handleComponentDrop({
         ...dropResult,
@@ -262,6 +263,7 @@ class DashboardGrid extends React.PureComponent {
         <div className="dashboard-grid" ref={this.setGridRef}>
           <GridContent className="grid-content" data-test="grid-content">
             {/* make the area above components droppable */}
+            
             {editMode && (
               <DragDroppable
                 component={gridComponent}
@@ -292,6 +294,7 @@ class DashboardGrid extends React.PureComponent {
                 onChangeTab={this.handleChangeTab}
               />
             ))}
+        
             {/* make the area below components droppable */}
             {editMode && gridComponent?.children?.length > 0 && (
               <DragDroppable

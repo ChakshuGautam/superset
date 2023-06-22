@@ -306,6 +306,7 @@ export class Tabs extends React.PureComponent {
   }
 
   handleDrop(dropResult) {
+  
     if (dropResult.dragging.type !== TABS_TYPE) {
       this.props.handleComponentDrop(dropResult);
     }

@@ -24,6 +24,7 @@ import DragDroppable from '../dnd/DragDroppable';
 import HoverMenu from '../menu/HoverMenu';
 import DeleteComponentButton from '../DeleteComponentButton';
 import { componentShape } from '../../util/propShapes';
+import EditableTitle from 'src/components/EditableTitle';
 
 const propTypes = {
   id: PropTypes.string.isRequired,
@@ -100,9 +101,15 @@ class Divider extends React.PureComponent {
                 <DeleteComponentButton onDelete={this.handleDeleteComponent} />
               </HoverMenu>
             )}
-
-            <DividerLine className="dashboard-component dashboard-component-divider" />
-
+<p>Hello{">>"} New Tag </p>
+            {/* <DividerLine className="dashboard-component dashboard-component-divider" /> */}
+            
+            {/* <EditableTitle
+                  title={component.meta.text}
+                  canEdit={editMode}
+                  onSaveTitle={this.handleChangeText}
+                  showTooltip={false}
+                /> */}
             {dropIndicatorProps && <div {...dropIndicatorProps} />}
           </div>
         )}

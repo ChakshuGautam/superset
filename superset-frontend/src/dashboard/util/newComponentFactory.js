@@ -29,6 +29,7 @@ import {
   TABS_TYPE,
   TAB_TYPE,
   DYNAMIC_TYPE,
+  BREADCUMB,
 } from './componentTypes';
 
 import {
@@ -62,6 +63,9 @@ const typeToDefaultMetaData = {
     width: GRID_COLUMN_COUNT,
     background: BACKGROUND_TRANSPARENT,
   },
+  [BREADCUMB]: {  text: t('New header'),
+  headerSize: MEDIUM_HEADER,
+  background: BACKGROUND_TRANSPARENT, },
 };
 
 function uuid(type) {
