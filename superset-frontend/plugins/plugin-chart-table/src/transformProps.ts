@@ -206,7 +206,7 @@ const transformProps = (
     rawFormData: formData,
     queriesData = [],
     filterState,
-    ownState: serverPaginationData,
+    ownState: { serverPaginationData, groupByIndex },
     hooks: {
       onAddFilter: onChangeFilter,
       setDataMask = () => {},
@@ -228,6 +228,7 @@ const transformProps = (
     show_totals: showTotals,
     conditional_formatting: conditionalFormatting,
     allow_rearrange_columns: allowRearrangeColumns,
+    groupby: groupBy,
   } = formData;
   const timeGrain = extractTimegrain(formData);
 
@@ -265,6 +266,7 @@ const transformProps = (
     serverPaginationData: serverPagination
       ? serverPaginationData
       : defaultServerPaginationData,
+    groupByIndex: groupByIndex || 0,
     setDataMask,
     alignPositiveNegative,
     colorPositiveNegative,
@@ -282,6 +284,7 @@ const transformProps = (
     timeGrain,
     allowRearrangeColumns,
     onContextMenu,
+    groupBy,
   };
 };
 

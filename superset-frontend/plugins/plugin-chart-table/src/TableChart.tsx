@@ -232,6 +232,8 @@ export default function TableChart<D extends DataRecord = DataRecord>(
     allowRearrangeColumns = false,
     onContextMenu,
     emitCrossFilters,
+    groupByIndex,
+    groupBy,
   } = props;
   const timestampFormatter = useCallback(
     value => getTimeFormatterForGranularity(timeGrain)(value),
@@ -505,12 +507,24 @@ export default function TableChart<D extends DataRecord = DataRecord>(
             // show raw number in title in case of numeric values
             title: typeof value === 'number' ? String(value) : undefined,
             onClick:
-              emitCrossFilters && !valueRange && !isMetric
+              false && emitCrossFilters && !valueRange && !isMetric
                 ? () => {
                     // allow selecting text in a cell
                     if (!getSelectedText()) {
                       toggleFilter(key, value);
                     }
+                  }
+                : groupBy?.includes(column.key) && groupBy.at(-1) !== column.key
+                ? () => {
+                    const temp = {
+                      ownState: {
+                        ...getCrossFilterDataMask(key, value).dataMask
+                          .extraFormData,
+                        serverPaginationData,
+                        groupByIndex: groupByIndex + 1,
+                      },
+                    };
+                    setDataMask(temp);
                   }
                 : undefined,
             onContextMenu: (e: MouseEvent) => {
@@ -556,7 +570,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
                   /* The following classes are added to support custom CSS styling */
                   className={cx(
                     'cell-bar',
-                    value && value < 0 ? 'negative' : 'positive',
+                    value && (value as number) < 0 ? 'negative' : 'positive',
                   )}
                   css={cellBarStyles}
                 />
@@ -650,7 +664,7 @@ export default function TableChart<D extends DataRecord = DataRecord>(
 
   const handleServerPaginationChange = useCallback(
     (pageNumber: number, pageSize: number) => {
-      updateExternalFormData(setDataMask, pageNumber, pageSize);
+      updateExternalFormData(setDataMask, pageNumber, pageSize, groupByIndex);
     },
     [setDataMask],
   );

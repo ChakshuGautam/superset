@@ -52,6 +52,9 @@ const buildQuery: BuildQuery<TableChartFormData> = (
   formData: TableChartFormData,
   options,
 ) => {
+  if (formData.groupby) {
+    formData.groupby = [formData.groupby[options?.ownState?.groupByIndex || 0]];
+  }
   const { percent_metrics: percentMetrics, order_desc: orderDesc = false } =
     formData;
   const queryMode = getQueryMode(formData);
