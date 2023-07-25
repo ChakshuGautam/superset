@@ -23,10 +23,14 @@ export const updateExternalFormData = (
   setDataMask: SetDataMaskHook = () => {},
   pageNumber: number,
   pageSize: number,
+  groupByIndex: number,
 ) =>
   setDataMask({
     ownState: {
-      currentPage: pageNumber,
-      pageSize,
+      groupByIndex,
+      serverPaginationData: {
+        currentPage: pageNumber,
+        pageSize,
+      },
     },
   });

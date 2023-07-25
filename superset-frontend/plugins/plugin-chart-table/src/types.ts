@@ -90,6 +90,7 @@ export interface TableChartTransformedProps<D extends DataRecord = DataRecord> {
   rowCount?: number;
   serverPagination: boolean;
   serverPaginationData: { pageSize?: number; currentPage?: number };
+  groupByIndex: number;
   setDataMask: SetDataMaskHook;
   isRawRecords?: boolean;
   data: D[];
@@ -116,6 +117,7 @@ export interface TableChartTransformedProps<D extends DataRecord = DataRecord> {
     clientY: number,
     filters?: ContextMenuFilters,
   ) => void;
+  groupBy?: QueryFormMetric[] | null;
 }
 
 export default {};
